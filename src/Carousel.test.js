@@ -47,3 +47,12 @@ it("works when you click on the left arrow", function() {
   // expect the previous image to show
   expect(queryByAltText("Photo by Richard Pasquarella on Unsplash")).toBeInTheDocument();
 });
+
+it("hides left arrow at beginning of carousel", function() {
+  const { queryByTestId, queryByAltText, toContain } = render(<Carousel />);
+
+  // expect the first image to show
+  expect(queryByAltText("Photo by Richard Pasquarella on Unsplash")).toBeInTheDocument();
+  // expect left arrow to be hidden 
+  expect(queryByTestId("left-arrow").classList).toContain("hidden");
+});
